@@ -1,10 +1,15 @@
+# The CookieJar class is responsible for handling all cookie functionality
 class CookieJar < Hash
   attr_reader :expires
 
+  # Basically it's the same as the method update
   def initialize(str_or_hash = nil, defaults = {})
     update(str_or_hash, defaults)
   end
 
+  # The update method takes either a string or a hash.  The string needs to be
+  # formatted like a cookie.  Please note that this does not take *all* cookie
+  # formats yet, but it takes many.
   def update(str_or_hash, defaults = {})
     puts str_or_hash.green if str_or_hash.is_a?(String)
     case str_or_hash
@@ -41,7 +46,8 @@ class CookieJar < Hash
 
   end
 
-  # This will need to consider expiray and host information eventually...
+  # Puts the cookie information out in string format. Will eventually consider
+  # expirary information, but currently does not.
   def to_s; map { |name, val| "#{val['name']}=#{val}" }.join(','); end
 
   class InvalidKey < StandardError; end
@@ -54,7 +60,7 @@ class CookieJar < Hash
     end
   end
 
-  class Cookie < String
+  class Cookie < String 
     attr_accessor :secure
 
     # "name" is not actually a valid cookie attribute, but we will use it for internal processing.

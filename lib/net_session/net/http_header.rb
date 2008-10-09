@@ -1,5 +1,5 @@
 module Net::HTTPHeader
-
+  # An improved version of Ruby's set_form_data - this one accepts arrays as values
   def set_form_data(params, sep = '&')
     self.body = params.map { |k,v|
       case v
@@ -10,6 +10,7 @@ module Net::HTTPHeader
     self.content_type = 'application/x-www-form-urlencoded'
   end
 
+  # Much like set_form_data, except for file uploads
   # Files have the format of {:name => {:filename => 'testing.txt', :content => 'Your content goes here, bub.'}}
   def set_multipart_form_data(params, sep = '&')
     boundary = '--------------the_smurfs_are_eating_your_lunch_12581827'
@@ -34,7 +35,7 @@ module Net::HTTPHeader
     self.content_type = "multipart/form-data; boundary=#{boundary}"
   end
 
-  def multipart_format(hash)
+  def multipart_format(hash) #:nodoc:
     str = %'Content-Disposition: form-data; name="#{hash[:name]}"'
     str = %'#{str}; filename="#{hash[:filename]}"\r\nContent-Type: #{hash[:type] ? hash[:type] : MIME::Types.type_for(hash[:filename])}' if hash[:filename]
     [%'#{str}\r\n\r\n#{hash[:content]}\r\n', !hash[:filename].blank?]
