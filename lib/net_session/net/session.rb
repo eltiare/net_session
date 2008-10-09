@@ -9,7 +9,7 @@ class Net::Session < Net::HTTP
 
 
   def request(*args) #:nodoc:
-    args[0]['cookie'] = (args[0]['cookie'] ? cookies.dup.merge(Eltiare::CookieJar.new(args[0]['cookie'])) : cookies).to_s
+    args[0]['cookie'] = (args[0]['cookie'] ? cookies.dup.merge(CookieJar.new(args[0]['cookie'])) : cookies).to_s
     args[0]['referer'] ||= @referer_url if @auto_referral && @referer_url
 
     set_default_headers(args[0])
@@ -60,7 +60,7 @@ class Net::Session < Net::HTTP
   end
 
   # Returns the cookies currently set in this object.
-  def cookies; @cookies ||= Eltiare::CookieJar.new; end
+  def cookies; @cookies ||= CookieJar.new; end
 
   # Returns the default headers either set before or in the method
   def default_headers
