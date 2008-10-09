@@ -1,0 +1,14 @@
+Net::Session
+===========
+
+I wrote these classes as I needed to access other sites with login information
+and post files and other information.
+
+Please be advised that I've not done a whole lot of testing on this library (as
+evidenced by the utter lack of specs), and so you use this library completely at
+your own risk!  Eventually I will get around to testing all of this, but for the
+moment I'm just getting it "out there." I've extracted the code from a project
+on which I am currently working, and I've not tested this gem - so it may not
+work at all. I will be testing and updating this as I find the time.  I've also
+not tested it on anything but Ruby 1.8.7. Patches and (nice) suggestions are
+always welcome!
