@@ -9,7 +9,7 @@ spec = Gem::Specification.new do |s|
   s.description = s.summary
   s.author = 'Jeremy Nicoll'
   s.email = 'jnicoll@gnexp.com'
-  s.homepage = 'http://github.com/eltiare/net--session/tree/master'
+  s.homepage = 'http://github.com/eltiare/net_session/tree/master'
   s.require_path = 'lib'
   s.files = %w(LICENSE README Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
 end
