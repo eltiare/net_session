@@ -17,7 +17,7 @@ sudo = ((RUBY_PLATFORM =~ /win32|mingw|bccwin|cygwin/) rescue nil) ? '' : ('sudo
 
 desc "install the plugin locally"
 task :install => [:package] do
-  sh "#{sudo} gem install pkg/#{spec.name}-#{spec.version} --no-update-sources}"
+  sh "#{sudo} gem install pkg/#{spec.name}-#{spec.version}"
 end
 
 namespace :jruby do

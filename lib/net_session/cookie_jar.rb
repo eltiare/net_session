@@ -11,7 +11,6 @@ class CookieJar < Hash
   # formatted like a cookie.  Please note that this does not take *all* cookie
   # formats yet, but it takes many.
   def update(str_or_hash, defaults = {})
-    puts str_or_hash.green if str_or_hash.is_a?(String)
     case str_or_hash
       when String:
         # Get expires part of cookie and remove it from string
@@ -47,7 +46,7 @@ class CookieJar < Hash
   end
 
   # Puts the cookie information out in string format. Will eventually consider
-  # expirary information, but currently does not.
+  # expirary and path information, but currently does not.
   def to_s; map { |name, val| "#{val['name']}=#{val}" }.join(','); end
 
   class InvalidKey < StandardError; end
@@ -60,7 +59,7 @@ class CookieJar < Hash
     end
   end
 
-  class Cookie < String 
+  class Cookie < String
     attr_accessor :secure
 
     # "name" is not actually a valid cookie attribute, but we will use it for internal processing.

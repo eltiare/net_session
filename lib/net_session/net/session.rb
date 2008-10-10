@@ -64,14 +64,15 @@ class Net::Session < Net::HTTP
 
   # Returns the default headers either set before or in the method
   def default_headers
-    @default_headers ||= {
-      'user-agent' => @default_headers['user_agent'] || 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1',
-      'accept' => @default_headers['accept'] || 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-      'accept-language' => @default_headers['accept_language'] || 'en-us,en;q=0.5',
-      'accept-charset' => @default_headers['accept_charset'] || 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
-      'keep-alive' => @default_headers['keep_alive']|| 300,
-      'connection' => @default_headers['connection'] || 'keep-alive'
-    }
+    @default_headers ||= {}
+    {
+      'user-agent' => 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1',
+      'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      'accept-language' => 'en-us,en;q=0.5',
+      'accept-charset' => 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+      'keep-alive' =>  300,
+      'connection' => 'keep-alive'
+    }.each { |k,v|  @default_headers[k] ||= v }
     @default_headers['accept-encoding'] = 'gzip,deflate' if @accept_compressed
     @default_headers
   end

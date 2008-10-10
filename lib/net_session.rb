@@ -6,6 +6,7 @@ require 'stringio'
 require 'net_session/cookie_jar'
 require 'net_session/net/http_header'
 require 'net_session/net/session'
+require 'net_session/class_extensions'
 
 # Merb is *not* required for this library - but we'll add some niceties for those
 # lucky enough to get to use Merb for their projects... eventually.

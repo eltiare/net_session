@@ -1,5 +1,4 @@
 TODO:
-  Make sure the gem package actually works
-  Write specs
+  Write more specs
   Parsing cookies from PayPal's secure server does not work - possibly other secure sites as well
   Test with multiple versions of Ruby to find minimum requirements
